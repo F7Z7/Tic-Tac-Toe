@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 109, 238, 1) 100%);
+
+}
+
+.header {
+    color: #ffe87b;
+    margin-bottom: 10px;
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0 orangered;
+
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns:100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: 5px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 5px dashed purple;
+    background: linear-gradient(135deg, #4568dc, #b06ab3);
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: white;
+    border: 2px solid #333;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: lightgreen;
+}
+
+.cell:active {
+    background-color: cyan;
+}
+
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 60px;
+    background-color: #ff5e7e;
+    border-radius: 10px;
+}
+
+.cell.x:before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+.cell.o::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 15px solid #00b8ff;
+    border-radius: 50%;
+}
+
+.resetGame button {
+    border: none;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 20px;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(45deg, #00f2fe, #4facfe);
+    font-family: "Comic Neue", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.resetGame button:hover {
+    background: rgb(255,255,255);
+    background: linear-gradient(45deg, #ffffff, #ee0000 100%);
+    color: black;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+#playerTurn{
+    font-size: 24px;
+    color: white;
+    height: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
