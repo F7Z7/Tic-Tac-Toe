@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     board = document.querySelector(".gameBoard");
     playerTurn = document.getElementById("playerTurn");
     cells = document.querySelectorAll(".cell");
+    cells.forEach(cell => cell.addEventListener('click', handleClick));
     const resetGameButton = document.getElementById("resetGame");
 
     const winPatterns = [
@@ -33,7 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("error occured")
         }
     }
-
+function handleClick(event){
+let cell=event.target;
+let dataIndex=cell.dataset.index;
+// check if cell is filled
+    if(gameBoard[dataIndex]!==''|| !gameActive){
+        console.log(`${dataIndex} is already filled`);
+    }
+}
 
 
 
