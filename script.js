@@ -1,4 +1,3 @@
-// Global variables
 let board, playerTurn, cells, currentPlayer, gameBoard, gameActive;
 
 // Initialize game
@@ -16,6 +15,7 @@ const winPatterns = [
 currentPlayer = 'X';
 gameBoard = ['', '', '', '', '', '', '', '', ''];
 gameActive = true;
+playerTurn.style.color = "red"
 playerTurn.innerHTML = `${currentPlayer}'s turn`;
 
 function checkWinner() {
@@ -24,18 +24,20 @@ function checkWinner() {
     for (let i = 0; i < winPatterns.length; i++) {
         const [a, b, c] = winPatterns[i];
 
-        if (gameBoard[a] !== '' && //checking if 3 cells have same element or class
+        if (gameBoard[a] !== '' && //checking if 3 cells have same content
             gameBoard[a] === gameBoard[b] &&
             gameBoard[a] === gameBoard[c]) {
             playerTurn.innerHTML = `${currentPlayer} won!`;
+            playerTurn.style.color = currentPlayer === "X" ? "red" : "blue";
             gameActive = false;
-           gameOver= true;
+            gameOver = true;
             return true;
         }
     }
 
     if (!gameBoard.includes('')) { //check for empty spaces, if not it's a tie
         playerTurn.innerHTML = "It's a Tie!";
+        playerTurn.style.color = "#003092"// separate color for tie
         gameActive = false;
         return true;
     }
@@ -54,23 +56,20 @@ function handleClick(event) {
     }
     gameBoard[dataIndex] = currentPlayer;
 
-        if(currentPlayer === 'X') {
-            cell.classList.add('x');
-        }
-        else if(currentPlayer === 'O') {
-            cell.classList.add('o');
-        }
-        else{
-            console.log(`${dataIndex} is already filled`);
-        }
-
-
+    if (currentPlayer === 'X') {
+        cell.classList.add('x');
+    } else if (currentPlayer === 'O') {
+        cell.classList.add('o');
+    } else {
+        console.log(`${dataIndex} is already filled`);
+    }
 
 
     // Check for winner
     if (!checkWinner()) {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         playerTurn.innerHTML = `${currentPlayer}'s turn`;
+        playerTurn.style.color = currentPlayer === 'X' ? "red" : "blue" //turn color changes based on X or Y
     }
 }
 
@@ -85,6 +84,6 @@ function resetGame() {
 }
 
 window.resetGame = resetGame;
-window.handleClick=handleClick;
-window.checkWinner=checkWinner;
-window.resetGame=resetGame;
+window.handleClick = handleClick;
+window.checkWinner = checkWinner;
+window.resetGame = resetGame;
