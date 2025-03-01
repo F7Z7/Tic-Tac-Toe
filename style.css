@@ -15,19 +15,21 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 109, 238, 1) 100%);
 }
 
 .header {
     color: #E52020;
-    margin-bottom: 10px;
     font-family: 'Bangers', cursive;
-    font-size: 3.5rem;
-    letter-spacing: 3px;
+    font-size: 3rem;
+    letter-spacing: 2px;
     text-shadow: 3px 3px 0 yellow;
 }
 
+/* Responsive Game Board */
 .gameContainer {
     display: flex;
     flex-direction: column;
@@ -38,48 +40,48 @@ main {
 
 .gameBoard {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    grid-template-rows: repeat(3, minmax(80px, 1fr));
     gap: 5px;
-    margin: 20px auto;
-    border-radius: 15px;
+    margin: 15px auto;
+    border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 10px double #003092;
+    border: 8px double #003092;
     background: linear-gradient(135deg, #4568dc, #b06ab3);
-
+    padding: 10px;
+    width: 90vw;
+    max-width: 320px;
 }
-
 
 .cell {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     background-color: white;
     border: 2px solid #333;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease-in-out;
+    aspect-ratio: 1;
 }
 
 .cell:hover {
     background: linear-gradient(135deg, lightgreen, yellow);
 }
 
-
+/* X & O Styles */
 .cell.x::before,
 .cell.x::after {
     content: '';
     position: absolute;
-    width: 12px;
-    height: 70px;
+    width: 10px;
+    height: 60%;
     background-color: red;
     border-radius: 10%;
-    border: 1px solid  #FDAB9E;
-    box-shadow: 0 0 10px  #E50046;
-
-
+    border: 1px solid #FDAB9E;
+    box-shadow: 0 0 10px #E50046;
 }
 
 .cell.x::before {
@@ -93,33 +95,44 @@ main {
 .cell.o::before {
     content: '';
     position: absolute;
-    width: 65px;
-    height: 65px;
-    border: 10px solid #00b8ff;
+    width: 60%;
+    height: 60%;
+    border: 8px solid #00b8ff;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 184, 255, 0.7);
 }
 
+/* Player Turn */
+#playerTurn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffe87b;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Reset Button */
 .resetGame button {
     border: none;
     width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 15px;
-    margin: 20px;
+    height: 45px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 15px;
     padding: 5px;
     color: white;
     cursor: pointer;
     background: linear-gradient(45deg, #00f2fe, #4facfe);
-    font-family: "Comic Neue", serif;
+    font-family: "Comic Neue", cursive;
     font-weight: 700;
     transition: all 0.3s ease-in-out;
 }
 
 .resetGame button:hover {
-    background: linear-gradient(45deg, #ffffff, #ee0000 100%);
+    background: linear-gradient(45deg, #ffffff, #ee0000);
     color: black;
-    transform: scale(1.2);
+    transform: scale(1.1);
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -127,13 +140,32 @@ main {
     transform: scale(0.9);
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
+a{
+    opacity: 50%;
+    margin-top: 10px;
+}
+@media screen and (max-width: 600px) {
+    .header {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
 
-#playerTurn {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffe87b;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border-radius: 5px;
+    .gameBoard {
+        gap: 3px;
+        border: 6px double #003092;
+    }
 
+    .cell {
+        font-size: 1.5rem;
+    }
+
+    #playerTurn {
+        font-size: 20px;
+    }
+
+    .resetGame button {
+        width: 90px;
+        height: 40px;
+        font-size: 13px;
+    }
 }
