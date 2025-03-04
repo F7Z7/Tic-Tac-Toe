@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
-  <div class="header">
-    <h1>Tic Tac Toe</h1>
+    <div class="header">
+        <h1>Tic Tac Toe</h1>
 
-  </div>
-  <div class="gameContainer">
-    <h2 id="playerTurn"></h2>
-    <div class="gameBoard">
-      <div class="cell" data-index="0"></div>
-      <div class="cell" data-index="1"></div>
-      <div class="cell" data-index="2"></div>
-      <div class="cell" data-index="3"></div>
-      <div class="cell" data-index="4"></div>
-      <div class="cell" data-index="5"></div>
-      <div class="cell" data-index="6"></div>
-      <div class="cell" data-index="7"></div>
-      <div class="cell" data-index="8"></div>
     </div>
-    <div class="resetGame">
-      <button onclick="resetGame(this)" id="resetGame">Reset Game</button>
+    <div class="gameContainer">
+        <h2 id="playerTurn"></h2>
+        <div class="gameBoard">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <div class="resetGame">
+            <button onclick="resetGame(this)" id="resetGame">Reset Game</button>
+        </div>
     </div>
-  </div>
+    <a> Made by F7Z</a>
 </main>
 <script src="script.js"></script>
 </body>
