@@ -19,7 +19,6 @@ playerTurn.style.color = "red"
 playerTurn.innerHTML = `${currentPlayer}'s turn`;
 
 function checkWinner() {
-    let gameOver = false;
 
     for (let i = 0; i < winPatterns.length; i++) {
         const [a, b, c] = winPatterns[i];
@@ -29,8 +28,8 @@ function checkWinner() {
             gameBoard[a] === gameBoard[c]) {
             playerTurn.innerHTML = `${currentPlayer} won!`;
             playerTurn.style.color = currentPlayer === "X" ? "red" : "blue";
+            [cells[a],cells[b],cells[c]].forEach(cell => cell.style.background ="linear-gradient(to right,  blue, red)");
             gameActive = false;
-            gameOver = true;
             return true;
         }
     }
@@ -44,14 +43,22 @@ function checkWinner() {
 
     return false;
 }
+if (!gameActive) {
+
+}
 
 function handleClick(event) {
     let cell = event.target;
     let dataIndex = Number(cell.dataset.index); // Adjust to zero-based index
 
     // Check if cell is filled or game is not active
-    if (gameBoard[dataIndex] !== '' || !gameActive) {
-        console.log(`Cell ${dataIndex} is already filled or game is not active`);
+    if (!gameActive) {
+        alert("Game Over! Please start a new game");
+        return;
+    }
+
+    if (gameBoard[dataIndex] !== '') {
+        alert(`${gameBoard[dataIndex]} is already filled`);
         return;
     }
     gameBoard[dataIndex] = currentPlayer;
