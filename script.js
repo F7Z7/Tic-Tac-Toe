@@ -39,7 +39,6 @@ function checkWinner() {
         playerTurn.style.color = "#003092"// separate color for tie
         gameActive = false;
         cells.forEach(cell => cell.style.background = "rgb(255,200,0)");
-
         return true;
     }
 
