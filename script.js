@@ -28,7 +28,7 @@ function checkWinner() {
             gameBoard[a] === gameBoard[c]) {
             playerTurn.innerHTML = `${currentPlayer} won!`;
             playerTurn.style.color = currentPlayer === "X" ? "red" : "blue";
-            [cells[a],cells[b],cells[c]].forEach(cell => cell.style.background ="linear-gradient(to right,  blue, red)");
+            [cells[a], cells[b], cells[c]].forEach(cell => cell.style.background = "lightgreen");
             gameActive = false;
             return true;
         }
@@ -38,14 +38,14 @@ function checkWinner() {
         playerTurn.innerHTML = "It's a Tie!";
         playerTurn.style.color = "#003092"// separate color for tie
         gameActive = false;
+        cells.forEach(cell => cell.style.background = "rgb(255,200,0)");
+
         return true;
     }
 
     return false;
 }
-if (!gameActive) {
 
-}
 
 function handleClick(event) {
     let cell = event.target;
@@ -58,7 +58,7 @@ function handleClick(event) {
     }
 
     if (gameBoard[dataIndex] !== '') {
-        alert(`${gameBoard[dataIndex]} is already filled`);
+        alert("This cell is already filled!");
         return;
     }
     gameBoard[dataIndex] = currentPlayer;
@@ -67,8 +67,6 @@ function handleClick(event) {
         cell.classList.add('x');
     } else if (currentPlayer === 'O') {
         cell.classList.add('o');
-    } else {
-        console.log(`${dataIndex} is already filled`);
     }
 
 
@@ -82,12 +80,16 @@ function handleClick(event) {
 
 function resetGame() {
     gameBoard = ['', '', '', '', '', '', '', '', ''];
+
     gameActive = true;
     currentPlayer = 'X';
     playerTurn.innerHTML = `${currentPlayer}'s turn`;
     cells.forEach(cell => {
         cell.classList.remove('x', 'o');
+        cell.style.background = "white";
     });
+
+
 }
 
 window.resetGame = resetGame;
